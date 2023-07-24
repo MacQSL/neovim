@@ -1,14 +1,6 @@
-require("theprimeagen.set")
-require("theprimeagen.remap")
-
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('ThePrimeagen', { clear = true})
-
-
-function R(name)
-    require("plenary.reload").reload_module(name)
-end
+local TheGroup = augroup('NeovimGroup', { clear = true})
 
 local function netrw_mapping()
   local bufmap = function(lhs, rhs)
@@ -20,13 +12,13 @@ end
 
 autocmd('FileType', {
   pattern = 'netrw',
-  group = ThePrimeagenGroup,
+  group = TheGroup,
   desc = 'Keybindings for netrw',
   callback = netrw_mapping
 })
 
 autocmd('TextYankPost', {
-    group = ThePrimeagenGroup,
+    group = TheGroup,
     pattern = '*',
     callback = function()
         vim.highlight.on_yank({
@@ -37,10 +29,7 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = TheGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
-
-
-

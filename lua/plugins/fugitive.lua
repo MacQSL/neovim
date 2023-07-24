@@ -1,4 +1,4 @@
-local helpers = require('theprimeagen.helpers')
+--local helpers = require('theprimeagen.helpers')
 
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.keymap.set("n", "<leader>gf", "<cmd>diffget //2<CR>")
@@ -12,7 +12,7 @@ autocmd("BufWinEnter", {
     pattern = "*",
     callback = function()
         -- set the default branch information on buffer open
-        helpers.statusline.git()
+        --helpers.statusline.git()
         if vim.bo.ft ~= "fugitive" then
             return
         end
@@ -34,11 +34,15 @@ autocmd("BufWinEnter", {
     end,
 })
 
+return {
+  "tpope/vim-fugitive",
+}
 
-autocmd("User", {
-    group = ThePrimeagen_Fugitive,
-    pattern = "FugitiveChanged",
-    callback = function()
-     helpers.statusline.git()
-    end,
-})
+
+--autocmd("User", {
+--    group = ThePrimeagen_Fugitive,
+--    pattern = "FugitiveChanged",
+--    callback = function()
+--     helpers.statusline.git()
+--    end,
+--})

@@ -1,4 +1,8 @@
-local helpers = require('theprimeagen.helpers')
+--local helpers = require('theprimeagen.helpers')
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 15
+
 vim.opt.guicursor = "n-v-sm:block,i-ci:ver25,r-cr-o:hor20"
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -32,8 +36,8 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-helpers.statusline.init()
-vim.opt.statusline = '%{g:sl_git} %<%t'..'%h%m%r%=%-14.(%l,%c%V%)'..'%P'
+--helpers.statusline.init()
+--vim.opt.statusline = '%{g:sl_git} %<%t'..'%h%m%r%=%-14.(%l,%c%V%)'..'%P'
 vim.opt.laststatus = 3
 
 
