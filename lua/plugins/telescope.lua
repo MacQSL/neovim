@@ -10,7 +10,6 @@ return{
      --     find_files = helpers.telescope.mappings
      --   },
      -- }
-
       vim.keymap.set('n', '<leader>;', builtin.find_files, {})
       vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 

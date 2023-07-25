@@ -3,7 +3,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 15
 
-vim.opt.guicursor = "n-v-sm:block,i-ci:ver25,r-cr-o:hor20"
+--vim.opt.guicursor = "n-v-sm:block,i-ci:ver25,r-cr-o:hor20"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
