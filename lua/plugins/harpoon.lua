@@ -1,18 +1,25 @@
 return {
   "theprimeagen/harpoon",
-  config = function()
+  keys = function()
     local ui = require("harpoon.ui")
-    vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
+    local mark = require("harpoon.mark")
+    local action_state = require("telescope.actions.state")
 
-    vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
-    vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
-    vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
-    vim.keymap.set("n", "<leader>4", function() ui.nav_file(3) end)
+    local if_prompt_open = function(defaultCmd)
+      local state = action_state.get_selected_entry()
+      local buf = vim.bo.ft
+      print('🔱')
+      if buf == 'TelescopePrompt' then
+        mark.add_file(state.value)
+      else
+        defaultCmd()
+      end
+    end
+
+    vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
+    vim.keymap.set("n", "<leader>a", function() if_prompt_open(mark.add_file) end)
+
   end
 }
 
--- can harpoon file from telescope and working file
 
---vim.keymap.set("n", "<leader>a", function()
---  helpers.harpoon.if_prompt(mark.add_file)
---end)
