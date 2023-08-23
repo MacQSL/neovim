@@ -67,6 +67,7 @@ end
 local opts = {
   cmd = "~/",
   prompt_title = "select language",
+  preview_title = "Previous Cheat Sheet",
   results = {
     { "typescript", "test" },
     { "react",      "test" },
@@ -88,10 +89,6 @@ pickers.new(opts, {
       }
     end
   },
-  previewer = previewers.new_termopen_previewer({
-    get_command = function(entry, status)
-      return { 'cat', entry.path }
-    end
-  }),
+  previewer = conf.file_previewer(opts),
   sorter = conf.file_sorter(opts)
 }):find()
