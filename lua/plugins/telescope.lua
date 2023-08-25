@@ -6,15 +6,19 @@ return {
     require("telescope").load_extension("harpoon")
     local builtin = require('telescope.builtin')
 
-    vim.keymap.set('n', '<leader>;', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
+    -- project actions
+    vim.keymap.set('n', '<leader>;', builtin.find_files, { desc = "find files" })
+    vim.keymap.set('n', '<leader>ps', builtin.live_grep, { desc = "[p]roject [s]earch string" })
+    vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = "[p]roject [g]it files" })
+    vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = "[p]roject [b]uffers" })
+    vim.keymap.set('n', '<leader>ph', builtin.help_tags, { desc = "[p]roject [h]elp tags" })
+    vim.keymap.set('n', '<leader>pk', builtin.keymaps, { desc = "[p]roject [k]ey maps" })
 
-    vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
-    vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
+    -- file/document actions
+    vim.keymap.set('n', '<leader>fn', builtin.treesitter, { desc = "[f]ile fu[n]ctions"})
+    vim.keymap.set('n', '<leader>fv', builtin.lsp_document_symbols, { desc = "[f]ile [v]ariables"})
 
-    vim.keymap.set('n', '<leader>H', builtin.help_tags, {})
-
-    -- dope!
-    vim.keymap.set('n', '<leader>fn', builtin.treesitter, {})
+    -- git actions
+    vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "[g]it [b]ranches"})
   end
 }
