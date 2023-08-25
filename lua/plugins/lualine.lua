@@ -1,5 +1,6 @@
 --This removes the duplicated --INSERT-- status
 vim.opt.showmode = false
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
