@@ -1,35 +1,29 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local TheGroup = augroup('NeovimGroup', { clear = true})
-
-local function netrw_mapping()
-  local bufmap = function(lhs, rhs)
-    local opts = {buffer = true, remap = true}
-    vim.keymap.set('n', lhs, rhs, opts)
-  end
-  bufmap('<C-l>', '<C-w>l')
-end
-
-autocmd('FileType', {
-  pattern = 'netrw',
-  group = TheGroup,
-  desc = 'Keybindings for netrw',
-  callback = netrw_mapping
-})
+local neovimGroup = augroup('NeovimGroup', { clear = true })
+local userConfigGroup = augroup('userconfig', { clear = true })
 
 autocmd('TextYankPost', {
-    group = TheGroup,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
-        })
-    end,
+  group = neovimGroup,
+  desc = 'quickly highlights yanked text',
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 50,
+    })
+  end,
 })
 
-autocmd({"BufWritePre"}, {
-    group = TheGroup,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
+autocmd({ "BufWritePre" }, {
+  group = neovimGroup,
+  pattern = "*",
+  command = [[%s/\s\+$//e]],
+})
+
+autocmd({'BufWinEnter'}, {
+  group = userConfigGroup,
+  desc = 'return cursor to where it was last time closing the file',
+  pattern = '*',
+  command = 'silent! normal! g`"zv zz',
 })

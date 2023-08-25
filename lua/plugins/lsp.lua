@@ -20,7 +20,7 @@ return {
 
     lsp.ensure_installed({
       'rust_analyzer',
-      'lua_ls'
+      'lua_ls',
     })
     -- Fix Undefined global 'vim'
     lsp.nvim_workspace()

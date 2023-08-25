@@ -1,7 +1,7 @@
-
 --changes current window
 --cycles currently open windows
 vim.keymap.set("n", "<leader>w", "<C-w>w")
+--closes all other windows
 vim.keymap.set("n", "<leader>o", "<C-w>o")
 
 --project view: displays vim file tree
@@ -12,6 +12,10 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 --moves selected text
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+--on yank keeps the cursor position
+--check here if weird yank issue's occur
+vim.keymap.set("v", "y", "ygv<Esc>")
 
 --down/up half page and centers cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -30,7 +34,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
