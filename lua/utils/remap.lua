@@ -1,24 +1,24 @@
 --changes current window
 --cycles currently open windows
-vim.keymap.set("n", "<leader>w", "<C-w>w")
+vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "change [w]indow" })
 --closes all other windows
-vim.keymap.set("n", "<leader>o", "<C-w>o")
+vim.keymap.set("n", "<leader>o", "<C-w>o", { desc = "close [o]ther windows" })
 
 --project view: displays vim file tree
-vim.keymap.set("n", "<leader>pv", "<cmd>Lexplore <CR>")
+vim.keymap.set("n", "<leader>pv", "<cmd>Lexplore <CR>", { desc = "[p]roject view (Netrw)" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 --moves selected text
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected text down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected text up" })
 
 --on yank keeps the cursor position
 --check here if weird yank issue's occur
-vim.keymap.set("v", "y", "ygv<Esc>")
+vim.keymap.set("v", "y", "ygv<Esc>", { desc = "better cusor position on yank"})
 
 --down/up half page and centers cursor
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz" )
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 --search and replace word in file

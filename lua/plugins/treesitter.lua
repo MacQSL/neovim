@@ -3,6 +3,9 @@ return {
   build = function()
     require('nvim-treesitter.install').update({ with_sync = true })
   end,
+  dependencies = {
+    { 'nvim-treesitter/nvim-treesitter-context' },
+  },
   config = function()
     require 'nvim-treesitter.configs'.setup {
       -- A list of parser names, or "all"

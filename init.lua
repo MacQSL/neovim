@@ -1,8 +1,9 @@
 vim.g.mapleader = " "
 
-require("setup.set")
-require("setup.remap")
-require("setup.autocmd")
+require("utils.set")
+require("utils.remap")
+require("utils.autocmd")
+require("utils.helpers")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
