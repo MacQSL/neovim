@@ -20,5 +20,6 @@ return {
 
     -- git actions
     vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "[g]it [b]ranches"})
+    vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "[g]it [c]ommits"})
   end
 }
