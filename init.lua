@@ -4,6 +4,7 @@ require("utils.set")
 require("utils.remap")
 require("utils.autocmd")
 require("utils.helpers")
+require("utils.cheatsheet")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

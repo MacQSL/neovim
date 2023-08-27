@@ -1,58 +1,78 @@
 local helpers = require("utils.helpers")
 
-local cheatsheet = {
+local CS = {
   -- not neeeded if filetype and language name are the same ie: lua
   language_filetypes = {
-    js = "javascript",
-    -- this is an extenstion of the js cheatsheet
-    ts = "typescript"
+    -- this is an extenstion of the js CS
+    ts = "typescript",
+    react = "jsx"
   }
 }
 
 -- expects str_query="a b c"
-cheatsheet.format_query = function(str_query)
-  return str_query:gsub("% ", "+")
+CS.format_query = function(query_table)
+  return table.concat(query_table, "+")
 end
 
 -- expects query="a+b+c"
-cheatsheet.format_curl = function(language, query)
-  return "! curl -s cheat.sh/" .. language .. "/" .. query .. "/T"
+CS.format_curl = function(language, query)
+  return "curl -s cheat.sh/" .. language .. "/" .. query .. "?T"
 end
 
-cheatsheet.format_custom_curl = function(language, query)
-  local ts = cheatsheet.language_filetypes.ts
+CS.format_custom_curl = function(language, query)
+  local ts = CS.language_filetypes.ts
   if language == "ts" then
     return {
-      curl = cheatsheet.format_curl("js", ts .. "+" .. query),
+      curl = CS.format_curl("js", ts .. "+" .. query),
       parsed_language = ts
     }
   end
-  return { curl = cheatsheet.format_curl(language, query), parsed_language = language }
+  return {
+    curl = CS.format_curl(language, query),
+    parsed_language = language
+  }
 end
 
-cheatsheet.get_filetype = function(language)
-  local diff_filetype = cheatsheet.language_filetypes[language]
+CS.get_filetype = function(language)
+  local diff_filetype = CS.language_filetypes[language]
   return diff_filetype and diff_filetype or language
 end
 
-cheatsheet.populate_buffer = function(language, str_query)
-  local query = cheatsheet.format_query(str_query)
-  local format = cheatsheet.format_custom_curl(language, query)
-  local filetype = cheatsheet.get_filetype(format.parsed_language)
+CS.get_props_from_cmd_args = function(cmd_args)
+  local args_array = cmd_args.fargs
+  local language = args_array[1]
+  table.remove(args_array, 1)
+  return { language = language, query = args_array }
+end
+
+-- expects language="ts" || "js" || "lua" etc... query_array={"slice", "array"} etc...
+CS.generate_buffer_cheatsheet = function(language, query_table)
+  local query = CS.format_query(query_table)
+  local format = CS.format_custom_curl(language, query)
+  local filetype = CS.get_filetype(format.parsed_language)
   local curl_data_set_filetype = function()
-    vim.cmd("read " .. format.curl .. "?T")
-    vim.cmd("set filetype=" .. filetype)
+    vim.cmd("read !" .. format.curl)
   end
+  print(format.curl)
   helpers.create_temp_buffer(curl_data_set_filetype)
 end
 
-cheatsheet.props_from_args = function(args)
+-- Setting autocommand and default mappings
+vim.api.nvim_create_user_command("CheatSheet", function(args)
+  local props = CS.get_props_from_cmd_args(args)
+  CS.generate_buffer_cheatsheet(props.language, props.query)
+end, { nargs = "*", bang = true })
 
-  print("called")
-end
+-- --tagged used as filetype and in query
+-- -tagged used only as filetype
+-- js --typescript
+vim.keymap.set("n", "<leader>ch", ":CheatSheet ", { desc = "[c][h]eat.sh freeform buffer" })
+vim.keymap.set("n", "<leader>js", ":CheatSheet js function ", { desc = "[j]ava[s]cript cheat.sh buffer" })
+vim.keymap.set("n", "<leader>jx", ":CheatSheet js -jsx react", { desc = "[j]ava[s]cript react cheat.sh buffer" })
+vim.keymap.set("n", "<leader>ts", ":CheatSheet js --typescript ", { desc = "[t]ype[s]cript cheat.sh buffer" })
 
-vim.api.nvim_create_user_command("Cheatsheet", cheatsheet.props_from_args, {})
+vim.keymap.set("n", "<leader>lu", ":CheatSheet lua ", { desc = "[lu]a cheat.sh buffer" })
 
-cheatsheet.populate_buffer('python', 'slice')
 
-return cheatsheet
+
+return CS
