@@ -2,12 +2,10 @@ local helpers = require("utils.helpers")
 
 local CS = {}
 
--- expects str_query="a b c"
 CS.format_query = function(query_table)
   return table.concat(query_table, "+")
 end
 
--- expects query="a+b+c"
 CS.format_curl = function(language, query)
   return "curl -s cheat.sh/" .. language .. "/" .. query .. "?T"
 end
@@ -40,8 +38,7 @@ vim.keymap.set("n", "<leader>ch", ":CheatSheet ", { desc = "[c][h]eat.sh freefor
 vim.keymap.set("n", "<leader>js", ":CheatSheet javascript js function ", { desc = "[j]ava[s]cript cheat.sh buffer" })
 vim.keymap.set("n", "<leader>jx", ":CheatSheet jsx js react ", { desc = "[j]ava[s]cript react cheat.sh buffer" })
 vim.keymap.set("n", "<leader>ts", ":CheatSheet typescript js typescript ", { desc = "[t]ype[s]cript cheat.sh buffer" })
-
-vim.keymap.set("n", "<leader>lu", ":CheatSheet lua ", { desc = "[lu]a cheat.sh buffer" })
+vim.keymap.set("n", "<leader>lu", ":CheatSheet lua lua ", { desc = "[lu]a cheat.sh buffer" })
 
 
 

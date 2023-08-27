@@ -22,12 +22,8 @@ helpers.create_temp_buffer = function(bufr_fn)
   end
 end
 
--- local query = string_query:gsub("% ", "+")
--- local curl = "! curl cheat.sh/" .. language .. "/" .. query.."/T"
--- vim.cmd("read "..curl)
-
---module.cheat_sheet.format_query("a b c")
---module.cheat_sheet.format_curl("js", "a b c")
---module.create_temp_buffer()
+helpers.print_table = function(_table)
+  print(table.concat(_table, ", "))
+end
 
 return helpers
