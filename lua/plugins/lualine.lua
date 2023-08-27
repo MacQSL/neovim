@@ -6,6 +6,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
   opts = {
     options = {
+      icons_enabled = false,
       section_separators = { left = '', right = '' },
       component_separators = { left = '|', right = '|' },
     },

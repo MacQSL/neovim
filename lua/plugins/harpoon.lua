@@ -1,5 +1,8 @@
 return {
   "theprimeagen/harpoon",
+  dependencies = {
+    { "nvim-telescope/telescope.nvim" }
+  },
   keys = function()
     local ui = require("harpoon.ui")
     local helpers = require("utils.helpers")

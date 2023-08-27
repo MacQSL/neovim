@@ -1,7 +1,6 @@
 return {
   "folke/trouble.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  opts = {},
   config = function()
     -- Trouble Project
     vim.keymap.set("n", "<leader>tp", "<cmd>TroubleToggle workspace_diagnostics<cr>",
