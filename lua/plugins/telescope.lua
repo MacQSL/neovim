@@ -12,7 +12,7 @@ return {
     local builtin = require('telescope.builtin')
 
     -- project actions
-    vim.keymap.set('n', '<leader>;', builtin.find_files, { desc = "find files" })
+    vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = "[p]roject [f]iles" })
     vim.keymap.set('n', '<leader>ps', builtin.live_grep, { desc = "[p]roject [s]earch string" })
     vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = "[p]roject [b]uffers" })
     vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = "[p]roject [g]it files" })

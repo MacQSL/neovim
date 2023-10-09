@@ -20,11 +20,7 @@ end
 CS.generate_buffer_cheatsheet = function(language, query_table, filetype)
   local query = CS.format_query(query_table)
   local curl = CS.format_curl(language, query)
-  local curl_data_set_filetype = function()
-    vim.cmd("read !" .. curl)
-    vim.cmd("set filetype=" .. filetype)
-  end
-  helpers.create_temp_buffer(curl_data_set_filetype)
+  helpers.curl_to_temp_buffer(curl, filetype)
 end
 
 -- Setting usercmd

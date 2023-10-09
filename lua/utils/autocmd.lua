@@ -21,10 +21,18 @@ autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
+autocmd({ "BufWritePre" }, {
+  group = neovimGroup,
+  desc = "format on save",
+  pattern = "*",
+  callback = function()
+    vim.lsp.buf.format()
+  end
+})
+
 autocmd({ 'BufWinEnter' }, {
   group = userConfigGroup,
   desc = 'return cursor to where it was last time closing the file',
   pattern = '*',
   command = 'silent! normal! g`"zv zz',
 })
-
