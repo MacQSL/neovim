@@ -4,7 +4,10 @@ require("utils.set")
 require("utils.remap")
 require("utils.autocmd")
 require("utils.helpers")
+
+-- custom util plugins
 require("utils.cheatsheet")
+require("utils.notes")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -20,5 +23,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup('plugins')
-
-
