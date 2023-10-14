@@ -21,14 +21,14 @@ autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-autocmd({ "BufWritePre" }, {
-  group = neovimGroup,
-  desc = "format on save",
-  pattern = "*",
-  callback = function()
-    vim.lsp.buf.format()
-  end
-})
+--autocmd({ "BufWritePre" }, {
+--  group = neovimGroup,
+--  desc = "format on save",
+--  pattern = "*",
+--  callback = function()
+--    vim.lsp.buf.format()
+--  end
+--})
 
 autocmd({ 'BufWinEnter' }, {
   group = userConfigGroup,

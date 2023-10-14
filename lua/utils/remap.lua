@@ -15,11 +15,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected text up" })
 
 --on yank keeps the cursor position
 --check here if weird yank issue's occur
-vim.keymap.set("v", "y", "ygv<Esc>", { desc = "better cusor position on yank"})
+vim.keymap.set("v", "y", "ygv<Esc>", { desc = "better cusor position on yank" })
 
 --down/up half page and centers cursor
-vim.keymap.set("n", "<C-d>", "<C-d>zz" )
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
 --search and replace word in file
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -40,5 +40,5 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
+	vim.cmd("so")
 end)

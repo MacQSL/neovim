@@ -6,8 +6,8 @@ require("utils.autocmd")
 require("utils.helpers")
 
 -- custom util plugins
-require("utils.cheatsheet")
-require("utils.notes")
+require("custom-plugins.cheatsheet")
+require("custom-plugins.notes")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
