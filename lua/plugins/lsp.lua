@@ -17,9 +17,10 @@ return {
 	},
 	config = function()
 		local lsp = require("lsp-zero")
+
 		lsp.preset("recommended")
 
-		lsp.ensure_installed({})
+		lsp.ensure_installed({ "eslint" })
 		-- Fix Undefined global 'vim'
 		lsp.nvim_workspace()
 
@@ -72,9 +73,9 @@ return {
 			vim.keymap.set("i", "<C-h>", function()
 				vim.lsp.buf.signature_help()
 			end, opts)
-			vim.keymap.set("n", "<leader>fm", function()
-				vim.lsp.buf.format()
-			end, opts)
+			--	vim.keymap.set("n", "<leader>fm", function()
+			--		vim.lsp.buf.format()
+			--	end, opts)
 		end)
 
 		lsp.setup()

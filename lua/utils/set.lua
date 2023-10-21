@@ -35,3 +35,11 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.opt.laststatus = 3
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
+vim.opt.hlsearch = false

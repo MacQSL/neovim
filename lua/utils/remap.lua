@@ -1,11 +1,10 @@
---changes current window
 --cycles currently open windows
 vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "change [w]indow" })
 --closes all other windows
 vim.keymap.set("n", "<leader>o", "<C-w>o", { desc = "close [o]ther windows" })
 
 --project view: displays vim file tree
-vim.keymap.set("n", "<leader>pv", "<cmd>Lexplore <CR>", { desc = "[p]roject view (Netrw)" })
+--vim.keymap.set("n", "<leader>pv", "<cmd>Lexplore <CR>", { desc = "[p]roject view (Netrw)" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
@@ -28,17 +27,10 @@ vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "n", "nzzzv")
 
--- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
 vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
+vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
