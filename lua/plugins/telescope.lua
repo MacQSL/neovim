@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.0",
-  dependencies = { {
+  dependencies = {
     "nvim-lua/plenary.nvim",
     "theprimeagen/harpoon",
     {
@@ -11,7 +11,8 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
-  } },
+  },
+  cmd = "Telescope",
   config = function()
     require("telescope").load_extension("harpoon")
   end,
@@ -34,6 +35,5 @@ return {
 
     -- git actions
     vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "[g]it [b]ranches" })
-    vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "[g]it [c]ommits" })
-  end,
+  end
 }
