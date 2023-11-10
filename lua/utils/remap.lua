@@ -10,8 +10,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "change [w]indow right" })
 --closes all other windows
 vim.keymap.set("n", "<leader>o", "<C-w>o", { desc = "close [o]ther windows" })
 
---project view: displays vim file tree
---vim.keymap.set("n", "<leader>pv", "<cmd>Lexplore <CR>", { desc = "[p]roject view (Netrw)" })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 

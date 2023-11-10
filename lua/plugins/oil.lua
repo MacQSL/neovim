@@ -1,13 +1,14 @@
 return {
   "stevearc/oil.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local oil = require("oil")
     oil.setup({
       default_file_explorer = true,
       float = {
         padding = 4,
-        max_width = 40,
-        max_height = 20,
+        max_width = 60,
+        max_height = 30,
       },
       keymaps = {
         ["<C-v>"] = "actions.select_vsplit",

@@ -1,9 +1,14 @@
 local plugins = {
   --"nvim-treesitter/playground",
-  { "MunifTanjim/prettier.nvim", opts = { bin = "prettierd" }, ft = { "js", "jsx", "tsx", "html", "ts" } },
+  {
+    "MunifTanjim/prettier.nvim",
+    enabled = false,
+    opts = { bin = "prettierd" },
+    ft = { "javascript", "js", "jsx", "typescript", "ts", "tsx", "typescriptreact", "javascriptreact" }
+  },
   {
     "windwp/nvim-autopairs",
-    ft = vim.g.supported_filetypes,
+    event = 'InsertEnter',
     opts = {
       enable_check_bracket_line = false,
       ignored_next_char = [=[[%w%%%'%[%"%.%`%{%$]]=],
@@ -11,7 +16,7 @@ local plugins = {
   },
   {
     "windwp/nvim-ts-autotag",
-    ft = { "html", "jsx", "tsx" },
+    event = 'InsertEnter',
     opts = {}
   },
   {
@@ -19,6 +24,17 @@ local plugins = {
     opts = {},
     keys = "m"
   },
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+    },
+    lazy = false,
+
+  }
 }
 
 return plugins
