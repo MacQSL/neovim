@@ -1,10 +1,14 @@
 return {
   "stevearc/oil.nvim",
+  event = { "BufReadPre" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local oil = require("oil")
     oil.setup({
       default_file_explorer = true,
+      view_options = {
+        show_hidden = true,
+      },
       float = {
         padding = 4,
         max_width = 60,
