@@ -25,7 +25,7 @@ return {
     vim.keymap.set('n', '<leader>pw', builtin.grep_string, { desc = "[p]roject [w]ord search" })
     --vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = "[p]roject [b]uffers" })
     vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = "[p]roject [g]it files" })
-    --vim.keymap.set('n', '<leader>pk', builtin.keymaps, { desc = "[p]roject [k]ey maps" })
+    vim.keymap.set('n', '<leader>pk', builtin.keymaps, { desc = "[p]roject [k]ey maps" })
     vim.keymap.set('n', '<leader>ph', function()
       builtin.oldfiles({ prompt_title = "History" })
     end, { desc = "[p]roject [h]istory" })

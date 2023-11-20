@@ -1,6 +1,6 @@
 return {
   "folke/trouble.nvim",
-  event = { "BufReadPre" },
+  event = { "LspAttach" },
   config = function()
     -- Trouble Project
     vim.keymap.set("n", "<leader>tp", "<cmd>TroubleToggle workspace_diagnostics<cr>",

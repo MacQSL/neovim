@@ -1,7 +1,7 @@
 return {
   "stevearc/oil.nvim",
-  event = { "BufReadPre" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  priority = 999,
   config = function()
     local oil = require("oil")
     oil.setup({

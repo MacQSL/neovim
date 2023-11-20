@@ -1,12 +1,6 @@
 local plugins = {
   --"nvim-treesitter/playground",
   {
-    "MunifTanjim/prettier.nvim",
-    enabled = false,
-    opts = { bin = "prettierd" },
-    ft = { "javascript", "js", "jsx", "typescript", "ts", "tsx", "typescriptreact", "javascriptreact" }
-  },
-  {
     "windwp/nvim-autopairs",
     event = 'InsertEnter',
     opts = {
@@ -26,13 +20,16 @@ local plugins = {
   },
   {
     'stevearc/dressing.nvim',
+    enabled = false,
     opts = {},
+    dependencies = {
+      { "nvim-telescope/telescope.nvim" },
+    },
   },
   {
     'numToStr/Comment.nvim',
-    opts = {
-    },
     lazy = false,
+    opts = {},
 
   }
 }
