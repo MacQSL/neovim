@@ -1,13 +1,14 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  priority = 1000,
-  lazy = false,
+	"catppuccin/nvim",
+	--"ellisonleao/gruvbox.nvim",
+	name = "catppuccin",
+	priority = 1000,
+	lazy = false,
 
-  config = function()
-    vim.cmd.colorscheme("catppuccin")
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-  end
+	config = function()
+		vim.cmd.colorscheme("catppuccin")
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+	end,
 }

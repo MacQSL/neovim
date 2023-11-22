@@ -21,6 +21,12 @@ autocmd({ "BufWritePre" }, {
 	command = [[%s/\s\+$//e]],
 })
 
+autocmd({ "InsertEnter" }, {
+	group = neovimGroup,
+	pattern = "*",
+	command = "silent! normal! ma",
+})
+
 --autocmd({ "BufWritePre" }, {
 --  group = neovimGroup,
 --  desc = "format on save",
