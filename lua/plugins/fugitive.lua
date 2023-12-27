@@ -11,6 +11,6 @@ return {
 		--vim.keymap.set("n", "<leader>gC", ":Git checkout --track origin/")
 
 		vim.keymap.set("n", "<leader>ga", ":Git add . <CR>")
-		vim.keymap.set("n", "<leader>gc", ":Git commit -m '")
+		vim.keymap.set("n", "<leader>gc", ":Git commit -m ''<Left>")
 	end,
 }

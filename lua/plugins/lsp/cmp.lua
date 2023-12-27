@@ -1,15 +1,22 @@
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
-
 	dependencies = {
 		{ "hrsh7th/cmp-buffer" },
 		{ "hrsh7th/cmp-path" },
-		{ "L3MON4D3/LuaSnip" },
+		{ "saadparwaiz1/cmp_luasnip" },
+		{
+			"L3MON4D3/LuaSnip",
+			config = function()
+				require("luasnip.loaders.from_snipmate").lazy_load()
+				require("luasnip").filetype_extend("typescriptreact", { "typescript" })
+			end,
+		},
 	},
 	config = function()
 		-- Here is where you configure the autocompletion settings.
 		local lsp_zero = require("lsp-zero")
+
 		lsp_zero.extend_cmp()
 
 		-- And you can configure cmp even more, if you want to.
@@ -19,9 +26,14 @@ return {
 
 		cmp.setup({
 			formatting = lsp_zero.cmp_format(),
-			experimental = {
-				ghost_text = true,
+			snippet = {
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body)
+				end,
 			},
+			-- experimental = {
+			-- 	ghost_text = true,
+			-- },
 			mapping = cmp.mapping.preset.insert({
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
@@ -30,8 +42,8 @@ return {
 				["<C-h>"] = cmp_action.luasnip_jump_backward(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "nvim_lsp", max_item_count = 5 },
 				{ name = "buffer" },
 				{ name = "path" },
 			}),
