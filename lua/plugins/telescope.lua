@@ -4,13 +4,13 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"theprimeagen/harpoon",
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-			cond = function()
-				return vim.fn.executable("make") == 1
-			end,
-		},
+		-- {
+		-- 	"nvim-telescope/telescope-fzf-native.nvim",
+		-- 	build = "make",
+		-- 	cond = function()
+		-- 		return vim.fn.executable("make") == 1
+		-- 	end,
+		-- },
 	},
 	opts = {
 		defaults = {
@@ -21,10 +21,19 @@ return {
 				},
 			},
 		},
+		pickers = {
+			live_grep = {
+				file_ignore_patterns = { "node_modules", ".git", "package-lock.json" },
+				additional_args = function(_)
+					return { "--hidden" }
+				end,
+			},
+			find_files = {
+				file_ignore_patterns = { "node_modules", ".git", "package-lock.json" },
+				hidden = true,
+			},
+		},
 	},
-	-- config = function()
-	-- 	require("telescope").load_extension("harpoon")
-	-- end,
 	keys = function()
 		local builtin = require("telescope.builtin")
 

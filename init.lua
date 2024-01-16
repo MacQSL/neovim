@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.o.termguicolors = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,9 +19,6 @@ require("lazy").setup({
 	{ import = "plugins" },
 	{ import = "plugins.lsp" },
 }, {
-	install = {
-		colorscheme = { "catppuccin" },
-	},
 	dev = {
 		path = "~/nvim_plugins",
 	},
