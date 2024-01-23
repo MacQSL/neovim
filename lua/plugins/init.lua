@@ -29,20 +29,23 @@ local plugins = {
 			vim.g.doge_mapping_comment_jump_backward = "<C-h>"
 		end,
 	},
-	{
-		"vim-test/vim-test",
-		config = function()
-			vim.keymap.set("n", "<leader>tt", ":TestNearest <CR>")
-			vim.keymap.set("n", "<leader>ta", ":TestFile <CR>")
-			vim.keymap.set("n", "<leader>ts", ":TestSuite <CR>")
-			vim.keymap.set("n", "<leader>tl", ":TestLast <CR>")
-		end,
-	},
+	{ "folke/zen-mode.nvim", opts = {} },
 	{ "nvim-focus/focus.nvim", version = "*", opts = {
 		ui = {
 			signcolumn = false,
 		},
 	} },
+	{ "nvim-treesitter/playground" },
+	{
+		"Dronakurl/injectme.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		-- This is for lazy load and more performance on startup only
+		cmd = { "InjectmeToggle", "InjectmeSave", "InjectmeInfo", "InjectmeLeave" },
+	},
 }
 
 return plugins
