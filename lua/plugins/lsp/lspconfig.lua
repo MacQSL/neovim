@@ -35,6 +35,16 @@ return {
 					local lua_opts = lsp_zero.nvim_lua_ls()
 					require("lspconfig").lua_ls.setup(lua_opts)
 				end,
+				tsserver = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.tsserver.setup({
+						cmd = { "typescript-language-server", "--stdio" },
+						settings = {
+							-- Disable the JSDoc type hint
+							diagnostics = { ignoredCodes = { 80004 } },
+						},
+					})
+				end,
 			},
 		})
 	end,
