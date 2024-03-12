@@ -1,6 +1,3 @@
---cycles currently open windows
-vim.keymap.set("n", "<leader>w", "<C-w>w", { desc = "change [w]indow" })
-
 --changes windows with vim movement controls
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "change [w]indow left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "change [w]indow down" })
@@ -10,7 +7,9 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "change [w]indow right" })
 --closes all other windows
 vim.keymap.set("n", "<leader>o", "<C-w>o", { desc = "close [o]ther windows" })
 
+-- exit terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("n", "<leader>tt", "<cmd>terminal<cr>i")
 
 --moves selected text
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected text down" })
