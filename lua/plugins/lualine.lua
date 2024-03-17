@@ -41,8 +41,21 @@ return {
 			component_separators = { left = "|", right = "|" },
 		},
 		sections = {
+			lualine_a = { "mode" },
+			--lualine_b = { "FugitiveHead", "diff" },
+			-- lualine_c = {
+			-- 	{
+			-- 		"buffers",
+			-- 		symbols = { modified = "[+]" },
+			-- 		buffers_color = {
+			-- 			-- Same values as the general color option can be used here.
+			-- 			active = "lualine_c_visual", -- Color for active buffer.
+			-- 			inactive = "lualine_c_inactive", -- Color for inactive buffer.
+			-- 		},
+			-- 	},
+			-- },
 			lualine_b = {
-				"branch",
+				"FugitiveHead",
 				"diff",
 				function()
 					return gstatus.ahead .. " " .. gstatus.behind .. ""
@@ -50,5 +63,7 @@ return {
 			},
 			lualine_x = { "filetype" },
 		},
+		inactive_sections = {},
+		extensions = { "fugitive" },
 	},
 }

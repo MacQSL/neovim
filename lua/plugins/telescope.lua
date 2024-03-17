@@ -1,59 +1,72 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.0",
+	event = { "VimEnter" },
+	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"theprimeagen/harpoon",
-		-- {
-		-- 	"nvim-telescope/telescope-fzf-native.nvim",
-		-- 	build = "make",
-		-- 	cond = function()
-		-- 		return vim.fn.executable("make") == 1
-		-- 	end,
-		-- },
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			cond = function()
+				return vim.fn.executable("make") == 1
+			end,
+		},
+		{ "nvim-telescope/telescope-ui-select.nvim" },
+		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
-	opts = {
-		defaults = {
-			mappings = {
-				i = {
-					["<C-k>"] = "move_selection_previous",
-					["<C-j>"] = "move_selection_next",
+	config = function()
+		require("telescope").setup({
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown(),
 				},
 			},
-		},
-		pickers = {
-			live_grep = {
-				file_ignore_patterns = { "node_modules", ".git", "package-lock.json" },
-				additional_args = function(_)
-					return { "--hidden" }
-				end,
+			defaults = {
+				mappings = {
+					i = {
+						["<C-k>"] = "move_selection_previous",
+						["<C-j>"] = "move_selection_next",
+					},
+				},
 			},
-			find_files = {
-				file_ignore_patterns = { "node_modules", ".git", "package-lock.json" },
-				hidden = true,
+			pickers = {
+				live_grep = {
+					file_ignore_patterns = { "node_modules", ".git", "package-lock.json" },
+					additional_args = function(_)
+						return { "--hidden" }
+					end,
+				},
+				find_files = {
+					file_ignore_patterns = { "node_modules", ".git", "package-lock.json" },
+					hidden = true,
+				},
 			},
-		},
-	},
-	keys = function()
+		})
+
+		-- Enable telescope extensions, if they are installed
+		pcall(require("telescope").load_extension, "fzf")
+		pcall(require("telescope").load_extension, "ui-select")
+
 		local builtin = require("telescope.builtin")
 
 		-- project actions
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "[p]roject [f]iles" })
-		vim.keymap.set("n", "<leader>ps", builtin.live_grep, { desc = "[p]roject [s]earch string" })
-		vim.keymap.set("n", "<leader>pw", builtin.grep_string, { desc = "[p]roject [w]ord search" })
-
-		--vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = "[p]roject [b]uffers" })
-		vim.keymap.set("n", "<leader>pg", builtin.git_files, { desc = "[p]roject [g]it files" })
-		vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "[p]roject [k]ey maps" })
+		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "[P]roject [F]iles" })
+		vim.keymap.set("n", "<leader>ps", builtin.live_grep, { desc = "[P]roject [S]earch string" })
+		vim.keymap.set("n", "<leader>pw", builtin.grep_string, { desc = "[P]roject [W]ord search" })
+		vim.keymap.set("n", "<leader>pb", builtin.buffers, { desc = "[P]roject [B]uffers" })
+		vim.keymap.set("n", "<leader>pg", builtin.git_files, { desc = "[P]roject [G]it files" })
+		vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "[P]roject [K]ey maps" })
 		vim.keymap.set("n", "<leader>ph", function()
 			builtin.oldfiles({ prompt_title = "History" })
-		end, { desc = "[p]roject [h]istory" })
+		end, { desc = "[P]roject [H]istory" })
 
-		-- file/document actions
-		--vim.keymap.set('n', '<leader>fn', builtin.treesitter, { desc = "[f]ile fu[n]ctions" })
-		--vim.keymap.set('n', '<leader>fv', builtin.lsp_document_symbols, { desc = "[f]ile [v]ariables" })
-
-		-- git actions
-		--vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "[g]it [b]ranches" })
+		-- Slightly advanced example of overriding default behavior and theme
+		vim.keymap.set("n", "<leader>/", function()
+			-- You can pass additional configuration to telescope to change theme, layout, etc.
+			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				previewer = false,
+			}))
+		end, { desc = "[/] Fuzzily search in current buffer" })
 	end,
 }
