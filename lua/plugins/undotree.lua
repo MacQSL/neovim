@@ -1,6 +1,6 @@
 return {
-  "mbbill/undotree",
+  'mbbill/undotree',
   keys = {
-    { "<leader>u", vim.cmd.UndotreeToggle, { desc = "[u]ndootree toggle" } }
-  }
+    { '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndotree Toggle' } },
+  },
 }

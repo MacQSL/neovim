@@ -1,28 +1,23 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		{ "hrsh7th/cmp-nvim-lsp" },
-		{ "williamboman/mason-lspconfig.nvim" },
-	},
-	config = function()
-		-- This is where all the LSP shenanigans will live
-		local lsp_zero = require("lsp-zero")
-		lsp_zero.extend_lspconfig()
+  'neovim/nvim-lspconfig',
+  dependencies = {
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'williamboman/mason-lspconfig.nvim' },
+  },
+  config = function()
+    -- This is where all the LSP shenanigans will live
+    local lsp_zero = require 'lsp-zero'
+    lsp_zero.extend_lspconfig()
 
-		lsp_zero.on_attach(function(client, bufnr)
-			-- see :help lsp-zero-keybindings
-			-- to learn the available actions
-			--lsp_zero.default_keymaps({ buffer = bufnr })
-			local opts = { noremap = true, silent = true, buffer = bufnr }
+    lsp_zero.on_attach(function(client, bufnr)
+      -- see :help lsp-zero-keybindings
+      -- to learn the available actions
+      --lsp_zero.default_keymaps({ buffer = bufnr })
+      local opts = { noremap = true, silent = true, buffer = bufnr }
 
-			local map = function(keys, func, desc)
-				vim.keymap.set(
-					"n",
-					keys,
-					func,
-					{ noremap = true, buffer = bufnr, silent = true, desc = "LSP: " .. desc }
-				)
-			end
+      local map = function(keys, func, desc)
+        vim.keymap.set('n', keys, func, { noremap = true, buffer = bufnr, silent = true, desc = 'LSP: ' .. desc })
+      end
 			-- stylua: ignore start
       -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
@@ -63,64 +58,64 @@ return {
 
           map("<leader>vd", function() vim.diagnostic.open_float() end, '[V]iew [D]iagnostics')
 
-			-- WARN: This is not Goto Definition, this is Goto Declaration.
-			--  For example, in C this would take you to the header
+      -- WARN: This is not Goto Definition, this is Goto Declaration.
+      --  For example, in C this would take you to the header
 
-			--map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-			-- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-			-- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-			-- vim.keymap.set("n", "J", function() vim.lsp.buf.code_action() end, opts)
-			-- vim.keymap.set("n", "<leader>vs", function() vim.lsp.buf.worspace_symbol() end, opts)
-			-- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-			-- vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.goto_prev() end, opts)
-			-- vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next() end, opts)
-			-- vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
-			-- vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-			-- stylua: ignore end
-		end)
+      --map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+      -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+      -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+      -- vim.keymap.set("n", "J", function() vim.lsp.buf.code_action() end, opts)
+      -- vim.keymap.set("n", "<leader>vs", function() vim.lsp.buf.worspace_symbol() end, opts)
+      -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+      -- vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.goto_prev() end, opts)
+      -- vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next() end, opts)
+      -- vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
+      -- vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+      -- stylua: ignore end
+    end)
 
-		require("mason-lspconfig").setup({
-			ensure_installed = {},
-			handlers = {
-				lsp_zero.default_setup,
-				lua_ls = function()
-					-- (Optional) Configure lua language server for neovim
-					--local lua_opts = lsp_zero.nvim_lua_ls()
-					require("lspconfig").lua_ls.setup({
-						settings = {
-							Lua = {
-								runtime = { version = "LuaJIT" },
-								workspace = {
-									checkThirdParty = false,
-									-- Tells lua_ls where to find all the Lua files that you have loaded
-									-- for your neovim configuration.
-									library = {
-										"${3rd}/luv/library",
-										unpack(vim.api.nvim_get_runtime_file("", true)),
-									},
-									-- If lua_ls is really slow on your computer, you can try this instead:
-									-- library = { vim.env.VIMRUNTIME },
-								},
-								completion = {
-									callSnippet = "Replace",
-								},
-								-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-								-- diagnostics = { disable = { 'missing-fields' } },
-							},
-						},
-					})
-				end,
-				tsserver = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.tsserver.setup({
-						cmd = { "typescript-language-server", "--stdio" },
-						settings = {
-							-- Disable the JSDoc type hint
-							diagnostics = { ignoredCodes = { 80004 } },
-						},
-					})
-				end,
-			},
-		})
-	end,
+    require('mason-lspconfig').setup {
+      ensure_installed = {},
+      handlers = {
+        lsp_zero.default_setup,
+        lua_ls = function()
+          -- (Optional) Configure lua language server for neovim
+          --local lua_opts = lsp_zero.nvim_lua_ls()
+          require('lspconfig').lua_ls.setup {
+            settings = {
+              Lua = {
+                runtime = { version = 'LuaJIT' },
+                workspace = {
+                  checkThirdParty = false,
+                  -- Tells lua_ls where to find all the Lua files that you have loaded
+                  -- for your neovim configuration.
+                  library = {
+                    '${3rd}/luv/library',
+                    unpack(vim.api.nvim_get_runtime_file('', true)),
+                  },
+                  -- If lua_ls is really slow on your computer, you can try this instead:
+                  -- library = { vim.env.VIMRUNTIME },
+                },
+                completion = {
+                  callSnippet = 'Replace',
+                },
+                -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+                -- diagnostics = { disable = { 'missing-fields' } },
+              },
+            },
+          }
+        end,
+        tsserver = function()
+          local lspconfig = require 'lspconfig'
+          lspconfig.tsserver.setup {
+            cmd = { 'typescript-language-server', '--stdio' },
+            settings = {
+              -- Disable the JSDoc type hint
+              diagnostics = { ignoredCodes = { 80004 } },
+            },
+          }
+        end,
+      },
+    }
+  end,
 }

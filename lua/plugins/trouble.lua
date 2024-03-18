@@ -1,8 +1,8 @@
 return {
-	"folke/trouble.nvim",
-	event = { "LspAttach" },
-	config = function()
-		local trouble = require("trouble")
+  'folke/trouble.nvim',
+  event = { 'LspAttach' },
+  config = function()
+    local trouble = require 'trouble'
 
     -- stylua: ignore start
 
@@ -14,5 +14,5 @@ return {
     vim.keymap.set("n", "<leader>tn", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
     -- Previous error
     vim.keymap.set("n", "<leader>tp", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-	end,
+  end,
 }
