@@ -1,6 +1,7 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v3.x',
+  event = { 'VeryLazy' },
   lazy = true,
   config = false,
   init = function()

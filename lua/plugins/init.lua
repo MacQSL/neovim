@@ -19,24 +19,31 @@ local plugins = {
   },
   {
     'numToStr/Comment.nvim',
+    event = { 'LspAttach' },
     opts = {},
   },
   {
     'kkoomen/vim-doge',
+    event = 'VeryLazy',
     build = ':call doge#install()',
     config = function()
       vim.g.doge_mapping_comment_jump_forward = '<C-l>'
       vim.g.doge_mapping_comment_jump_backward = '<C-h>'
     end,
   },
-  { 'nvim-focus/focus.nvim', version = '*', opts = {
-    ui = {
-      signcolumn = false,
+  {
+    'nvim-focus/focus.nvim',
+    event = { 'VeryLazy' },
+    version = '*',
+    opts = {
+      ui = {
+        signcolumn = false,
+      },
     },
-  } },
+  },
   {
     'folke/todo-comments.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
   },

@@ -32,7 +32,7 @@ _G.Gstatus_timer:start(0, 2000, vim.schedule_wrap(update_gstatus))
 
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { { 'nvim-tree/nvim-web-devicons', opt = true } },
+  --dependencies = { { 'nvim-tree/nvim-web-devicons', opt = true } },
   enabled = true,
   opts = {
     options = {
@@ -42,18 +42,6 @@ return {
     },
     sections = {
       lualine_a = { 'mode' },
-      --lualine_b = { "FugitiveHead", "diff" },
-      -- lualine_c = {
-      -- 	{
-      -- 		"buffers",
-      -- 		symbols = { modified = "[+]" },
-      -- 		buffers_color = {
-      -- 			-- Same values as the general color option can be used here.
-      -- 			active = "lualine_c_visual", -- Color for active buffer.
-      -- 			inactive = "lualine_c_inactive", -- Color for inactive buffer.
-      -- 		},
-      -- 	},
-      -- },
       lualine_b = {
         'FugitiveHead',
         'diff',

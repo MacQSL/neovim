@@ -1,10 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local neovimGroup = augroup('NeovimGroup', { clear = true })
-local userConfigGroup = augroup('userconfig', { clear = true })
 
 autocmd('TextYankPost', {
-  group = neovimGroup,
+  group = augroup('HighlightYankGroup', { clear = true }),
   desc = 'quickly highlights yanked text',
   pattern = '*',
   callback = function()
@@ -16,19 +14,19 @@ autocmd('TextYankPost', {
 })
 
 autocmd({ 'BufWritePre' }, {
-  group = neovimGroup,
+  group = augroup('StripWhiteSpaceGroup', { clear = true }),
   pattern = '*',
   command = [[%s/\s\+$//e]],
 })
 
 autocmd({ 'InsertEnter' }, {
-  group = neovimGroup,
+  group = augroup('InsertEnter', { clear = true }),
   pattern = '*',
   command = 'silent! normal! ma',
 })
 
 autocmd({ 'BufWinEnter' }, {
-  group = userConfigGroup,
+  group = augroup('BetterYankPositionGroup', { clear = true }),
   desc = 'return cursor to where it was last time closing the file',
   pattern = '*',
   command = 'silent! normal! g`"zv zz',

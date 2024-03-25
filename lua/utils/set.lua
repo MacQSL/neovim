@@ -52,8 +52,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -77,6 +77,14 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Disables line wrapping when switching between windows
 -- preventing text from bouncing around
 vim.opt.wrap = false
+
+-- Enables single statusline at bottom of scren
+vim.opt.laststatus = 3
+
+-- Better tab settings
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- vim.g.have_nerd_font = true
 --

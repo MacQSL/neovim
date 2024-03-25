@@ -5,10 +5,10 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'black', 'isort' },
-      javascript = { 'prettierd' },
-      typescript = { 'prettierd' },
-      javascriptreact = { 'prettierd' },
-      typescriptreact = { 'prettierd' },
+      javascript = { { 'prettierd', 'prettier' } },
+      typescript = { { 'prettierd', 'prettier' } },
+      javascriptreact = { { 'prettierd', 'prettier' } },
+      typescriptreact = { { 'prettierd', 'prettier' } },
       bash = { 'shellcheck' },
     },
     format_on_save = {
