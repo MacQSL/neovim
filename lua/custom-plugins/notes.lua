@@ -23,6 +23,6 @@ notes.open_scratch = function() vim.cmd 'vs ~/notes/scratch.md' end
 
 vim.keymap.set('n', '<leader>dn', function() notes.new_note() end, { desc = '[d]aily [n]ote' })
 
-vim.keymap.set('n', '<leader>n', function() notes.open_scratch() end, { desc = '[n]otes' })
+vim.keymap.set('n', '<leader>n', function() notes.open_scratch() end, { desc = '[n]ote' })
 
 return notes

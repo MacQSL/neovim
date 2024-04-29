@@ -29,9 +29,9 @@ return {
       snippet = {
         expand = function(args) require('luasnip').lsp_expand(args.body) end,
       },
-      -- experimental = {
-      -- 	ghost_text = true,
-      -- },
+      experimental = {
+        ghost_text = true,
+      },
       mapping = cmp.mapping.preset.insert {
         ['<CR>'] = cmp.mapping.confirm { select = true },
         ['<C-k>'] = cmp.mapping.select_prev_item(), -- previous suggestion

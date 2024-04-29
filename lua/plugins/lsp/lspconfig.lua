@@ -67,24 +67,10 @@ return {
       map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
       map('<leader>vd', function() vim.diagnostic.open_float() end, '[V]iew [D]iagnostics')
-
-      -- WARN: This is not Goto Definition, this is Goto Declaration.
-      --  For example, in C this would take you to the header
-
-      --map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-      -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-      -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-      -- vim.keymap.set("n", "J", function() vim.lsp.buf.code_action() end, opts)
-      -- vim.keymap.set("n", "<leader>vs", function() vim.lsp.buf.worspace_symbol() end, opts)
-      -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-      -- vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.goto_prev() end, opts)
-      -- vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next() end, opts)
-      -- vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
-      -- vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
     end)
 
     require('mason-lspconfig').setup {
-      ensure_installed = {},
+      ensure_installed = { 'tsserver', 'lua_ls' },
       handlers = {
         lsp_zero.default_setup,
         lua_ls = function()

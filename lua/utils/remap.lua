@@ -1,10 +1,6 @@
 --closes all other windows
 vim.keymap.set('n', '<leader>o', '<C-w>o', { desc = 'close [o]ther windows' })
 
--- exit terminal mode
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-vim.keymap.set('n', '<leader>tt', '<cmd>terminal<cr>i')
-
 --moves selected text
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'move selected text down' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'move selected text up' })

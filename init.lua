@@ -26,10 +26,10 @@ require('lazy').setup({
     'netrwPlugin',
   },
 })
+
 require 'utils.set'
 require 'utils.remap'
 require 'utils.autocmd'
 require 'utils.usercmd'
 require 'utils.helpers'
 require 'custom-plugins.notes'
---require("custom-plugins.search")
