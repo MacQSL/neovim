@@ -40,8 +40,8 @@ return {
         ['<C-h>'] = cmp_action.luasnip_jump_backward(),
       },
       sources = cmp.config.sources {
+        { name = 'nvim_lsp', max_item_count = 10 },
         { name = 'luasnip' },
-        { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'path' },
       },
