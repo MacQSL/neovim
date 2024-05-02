@@ -25,6 +25,6 @@ vim.keymap.set('n', 'n', 'nzzzv')
 
 vim.keymap.set('n', 'Q', '<nop>')
 
-vim.keymap.set('n', '<leader><leader>', function() vim.cmd 'so' end)
+vim.keymap.set('n', '<leader><leader>', function() vim.cmd('so') end)
 
 vim.keymap.set('n', '<Space>', '<Nop>', { silent = true })

@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  event = { 'VeryLazy' },
+  --event = { 'VeryLazy' },
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -53,6 +53,7 @@ return {
     vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = '[P]roject [B]uffers' })
     vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = '[P]roject [G]it files' })
     vim.keymap.set('n', '<leader>pk', builtin.keymaps, { desc = '[P]roject [K]ey maps' })
+    vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[G]it [B]ranches' })
     vim.keymap.set(
       'n',
       '<leader>ph',

@@ -1,12 +1,12 @@
 local plugins = {
-  {
-    'windwp/nvim-autopairs',
-    event = { 'LspAttach' },
-    opts = {
-      enable_check_bracket_line = false,
-      ignored_next_char = [=[[%w%%%'%[%"%.%`%{%$]]=],
-    },
-  },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = { 'LspAttach' },
+  --   opts = {
+  --     enable_check_bracket_line = false,
+  --     ignored_next_char = [=[[%w%%%'%[%"%.%`%{%$]]=],
+  --   },
+  -- },
   {
     'windwp/nvim-ts-autotag',
     event = { 'LspAttach' },
@@ -47,6 +47,31 @@ local plugins = {
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
   },
+  -- {
+  --   'nvim-tree/nvim-web-devicons',
+  --   opts = {
+  --     override = {
+  --       ['.dockerignore'] = {
+  --         icon = 'd',
+  --         color = '#458ee6',
+  --         cterm_color = '68',
+  --         name = 'Dockerfile',
+  --       },
+  --       ['Dockerfile'] = {
+  --         icon = 'd',
+  --         color = '#458ee6',
+  --         cterm_color = '68',
+  --         name = 'Dockerfile',
+  --       },
+  --       ['docker-compose.yml'] = {
+  --         icon = 'd',
+  --         color = '#458ee6',
+  --         cterm_color = '68',
+  --         name = 'Dockerfile',
+  --       },
+  --     },
+  --   },
+  -- },
 }
 
 return plugins
